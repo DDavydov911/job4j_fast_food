@@ -3,7 +3,7 @@ package model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Map;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Setter
@@ -16,15 +16,11 @@ public class Dish {
     private String dishName;
     private String description;
     private Double price;
-    @ElementCollection
-    /**
-       @ManyToMany
-       @JoinTable(
-            name = "dish_food",
+    @ManyToMany
+    @JoinTable(name = "dish_ingredient",
             joinColumns = {@JoinColumn(name = "dish_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "food_id", nullable = false,
+            inverseJoinColumns = {@JoinColumn(name = "ingredient_id", nullable = false,
                     updatable = false)}
-       )
-    */
-    private Map<Food, Double> ingredients;
+    )
+    private List<Ingredient> ingredients;
 }
