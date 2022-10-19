@@ -30,4 +30,7 @@ public class Order {
     private Courier courier;
     @OneToOne
     private Payment payment;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
