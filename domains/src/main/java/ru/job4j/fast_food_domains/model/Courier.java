@@ -1,4 +1,4 @@
-package model;
+package ru.job4j.fast_food_domains.model;
 
 import lombok.*;
 
@@ -18,3 +18,4 @@ public class Courier {
     @OneToMany(mappedBy = "courier")
     private Collection<Order> orders;
 }
+

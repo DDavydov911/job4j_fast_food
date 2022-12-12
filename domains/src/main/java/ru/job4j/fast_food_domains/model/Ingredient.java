@@ -1,19 +1,20 @@
-package model;
+package ru.job4j.fast_food_domains.model;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "ingredients")
 public class Ingredient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String foodName;
+    private String name;
     private Double price;
     @ManyToMany
     @JoinTable(
-            name = "dish_food",
-            joinColumns = {@JoinColumn(name = "food_id")},
+            name = "dish_ingredient",
+            joinColumns = {@JoinColumn(name = "ingredient_id")},
             inverseJoinColumns = {@JoinColumn(name = "dish_id")}
     )
     private Set<Dish> dishes;

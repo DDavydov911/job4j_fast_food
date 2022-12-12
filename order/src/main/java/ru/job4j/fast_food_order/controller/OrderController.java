@@ -1,7 +1,7 @@
 package ru.job4j.fast_food_order.controller;
 
-import model.Order;
-import model.Status;
+import ru.job4j.fast_food_domains.model.Order;
+import ru.job4j.fast_food_domains.model.Status;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

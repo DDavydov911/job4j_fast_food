@@ -1,6 +1,5 @@
-package model;
+package ru.job4j.fast_food_domains.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;

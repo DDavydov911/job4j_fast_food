@@ -1,4 +1,4 @@
-package model;
+package ru.job4j.fast_food_domains.model;
 
 import lombok.*;
 
@@ -9,6 +9,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Table(name = "dishes")
 public class Dish {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

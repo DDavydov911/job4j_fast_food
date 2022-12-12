@@ -1,7 +1,7 @@
 package ru.job4j.fast_food_order.service;
 
-import model.Order;
-import model.Status;
+import ru.job4j.fast_food_domains.model.Order;
+import ru.job4j.fast_food_domains.model.Status;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
