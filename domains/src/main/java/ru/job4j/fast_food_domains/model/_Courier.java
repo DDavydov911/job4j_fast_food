@@ -1,5 +1,5 @@
 package ru.job4j.fast_food_domains.model;
-
+/*
 import lombok.*;
 
 import javax.persistence.*;
@@ -9,7 +9,7 @@ import java.util.Collection;
 @Setter
 @Getter
 @Entity
-public class Courier {
+public class _Courier {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -19,3 +19,4 @@ public class Courier {
     private Collection<Order> orders;
 }
 
+*/
