@@ -3,16 +3,16 @@ package ru.job4j.fast_food_admin.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import ru.job4j.fast_food_admin.model.Dish;
-import ru.job4j.fast_food_admin.service.DishService;
+import ru.job4j.fast_food_admin.service.DishServiceApi;
+import ru.job4j.fast_food_domains.model.Dish;
 
 @Controller
 @RequestMapping("/api/v1/dishes")
 public class DishController {
 
-    private final DishService dishService;
+    private final DishServiceApi dishService;
 
-    public DishController(DishService dishService) {
+    public DishController(DishServiceApi dishService) {
         this.dishService = dishService;
     }
 
@@ -61,7 +61,7 @@ public class DishController {
     }
 
     @PostMapping("/add")
-    public String addDish(@ModelAttribute Dish dish, Model model) {
+    public String addDish(@ModelAttribute Dish dish) {
         dishService.save(dish);
         return "redirect:/api/v1/dishes";
     }

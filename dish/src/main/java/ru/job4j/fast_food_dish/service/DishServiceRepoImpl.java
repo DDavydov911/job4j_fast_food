@@ -1,18 +1,17 @@
 package ru.job4j.fast_food_dish.service;
-
+/*
 import org.springframework.stereotype.Service;
 import ru.job4j.fast_food_dish.repository.DishRepository;
-import ru.job4j.fast_food_domains.model.Dish;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class DishServiceImpl implements DishService {
+public class DishServiceRepoImpl implements DishService {
 
     private final DishRepository dishRepository;
 
-    public DishServiceImpl(DishRepository dishRepository) {
+    public DishServiceRepoImpl(DishRepository dishRepository) {
         this.dishRepository = dishRepository;
     }
 
@@ -56,3 +55,7 @@ public class DishServiceImpl implements DishService {
         return dishRepository.findById(id);
     }
 }
+
+
+ */
+

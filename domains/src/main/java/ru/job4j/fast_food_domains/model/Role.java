@@ -1,16 +1,13 @@
 package ru.job4j.fast_food_domains.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-
-@NoArgsConstructor
-@Getter
+@RequiredArgsConstructor
 @Setter
-@Entity
+@Getter
 public class Role {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String role;
 }

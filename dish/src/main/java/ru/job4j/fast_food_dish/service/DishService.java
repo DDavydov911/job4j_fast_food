@@ -9,7 +9,7 @@ public interface DishService {
 
       Dish update(Dish dish);
 
-      Optional<Dish> getById(long dishId);
+      Optional<Dish> getById(int dishId);
 
       void deleteDish(Dish dish);
 
@@ -19,5 +19,5 @@ public interface DishService {
 
       Optional<Dish> findByName(String dishName);
 
-      Optional<Dish> findById(long id);
+      Optional<Dish> findById(int id);
 }

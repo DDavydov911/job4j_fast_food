@@ -1,19 +1,19 @@
 package ru.job4j.fast_food_admin.store;
 
 import org.springframework.stereotype.Repository;
-import ru.job4j.fast_food_admin.model.Dish;
-import ru.job4j.fast_food_admin.model.Ingredient;
+import ru.job4j.fast_food_domains.model.Dish;
+import ru.job4j.fast_food_domains.model.Ingredient;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
-public class DishStore {
+public class DishStoreLocal {
 
     private final AtomicInteger id = new AtomicInteger(0);
     private final Map<Integer, Dish> dishes = new HashMap<>();
 
-    public DishStore() {
+    public DishStoreLocal() {
         Ingredient i1 = new Ingredient(1, "Potato", 5.0);
         Ingredient i2 = new Ingredient(2, "Meet", 15.0);
         Ingredient i3 = new Ingredient(3, "Fish", 20.0);
@@ -36,19 +36,21 @@ public class DishStore {
         return dishes.values();
     }
 
-    public Optional<Dish> update(Dish dish) {
+    public Dish update(Dish dish) {
         Dish dishStored = dishes.get(dish.getId());
         dish.setIngredients(dishStored.getIngredients());
         dishes.put(dish.getId(), dish);
-        return Optional.of(dish);
+        return dish;
     }
 
-    public void delete(int id) {
+    public boolean delete(int id) {
         dishes.remove(id);
+        return true;
     }
 
-    public void save(Dish dish) {
+    public Dish save(Dish dish) {
         dish.setId(id.incrementAndGet());
         dishes.put(dish.getId(), dish);
+        return dish;
     }
 }

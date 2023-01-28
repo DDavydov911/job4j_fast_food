@@ -4,32 +4,32 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-import ru.job4j.fast_food_dish.service.DishServiceImpl;
+import ru.job4j.fast_food_dish.service.DishService;
 import ru.job4j.fast_food_domains.model.Dish;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/dishservice/api")
+@RequestMapping("ds/api/v1")
 public class DishController {
 
-    private final DishServiceImpl dishService;
+    private final DishService dishService;
 
-    public DishController(DishServiceImpl dishService) {
+    public DishController(DishService dishService) {
         this.dishService = dishService;
     }
 
     @GetMapping("/test")
     public String test() {
-        return "Service is working";
+        return "DishService is working in dish domain";
     }
 
-    @GetMapping("/dish")
+    @GetMapping("/dishes")
     public List<Dish> findAll() {
         return dishService.getMenu();
     }
 
-    @PostMapping("/dish")
+    @PostMapping("/dishes")
     public ResponseEntity<Dish> create(@RequestBody Dish dish) {
         if (dish.getDishName() == null) {
             throw new NullPointerException("Name field must not be empty");
@@ -46,8 +46,8 @@ public class DishController {
         );
     }
 
-    @GetMapping("/dish/{id}")
-    public ResponseEntity<Dish> findById(@PathVariable("id") long id) {
+    @GetMapping("/dishes/{id}")
+    public ResponseEntity<Dish> findById(@PathVariable("id") int id) {
         var dish = this.dishService.findById(id);
         if (dish.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Dish is not found");
@@ -55,14 +55,14 @@ public class DishController {
         return new ResponseEntity<>(dish.get(), HttpStatus.OK);
     }
 
-    @PutMapping("/dish")
-    public ResponseEntity<Void> update(@RequestBody Dish dish) {
-        this.dishService.update(dish);
-        return ResponseEntity.ok().build();
+    @PutMapping("/dishes")
+    public ResponseEntity<Dish> update(@RequestBody Dish dish) {
+        Dish updatedDish = this.dishService.update(dish);
+        return new ResponseEntity<>(updatedDish, HttpStatus.OK);
     }
 
-    @DeleteMapping("/dish/{id}")
-    public ResponseEntity<Void> delete(@PathVariable("id") long id) {
+    @DeleteMapping("/dishes/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") int id) {
         Dish dish = new Dish();
         dish.setId(id);
         this.dishService.deleteDish(dish);
